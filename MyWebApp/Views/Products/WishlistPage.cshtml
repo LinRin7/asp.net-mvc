@@ -1,0 +1,102 @@
+﻿@model IEnumerable<MyWebApp.Models.Product>
+
+<div class="justify-content-center">
+    @if(Model.Count() == 0){
+        <p>目前願望清單沒有商品</p>
+    }else{
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-4" style="height: 100%;">
+                    <img src="@Html.DisplayFor(model => item.Picture)" width="80%" height="100%" />
+                </div>
+                <div class="col-8">
+                    <div class="b-example-divider"></div>
+                    <dl>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => item.Name)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => item.Description)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Price)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => item.Price)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Category)
+                        </dt>
+
+                        @if (item.Category == "game")
+                        {
+                            <dd class="col-sm-10">遊戲</dd>
+                        }
+                        else if (item.Category == "anime")
+                        {
+                            <dd class="col-sm-10">動畫</dd>
+                        }
+                        else if (item.Category == "music")
+                        {
+                            <dd class="col-sm-10">音樂</dd>
+                        }
+                        else if (item.Category == "goods")
+                        {
+                            <dd class="col-sm-10">周邊商品</dd>
+                        }
+
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.ReleaseDate)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => item.ReleaseDate)
+                        </dd>
+                        <dt class="col-sm-2">
+                            @Html.DisplayNameFor(model => model.Brand)
+                        </dt>
+                        <dd class="col-sm-10">
+                            @Html.DisplayFor(model => item.Brand)
+                        </dd>
+                    </dl>
+                    <div class="align-self-end">
+                        <button type="button" class="btn btn-secondary" onclick="deleteFromWishlist(@item.Id)">從願望清單移除</button>
+                    </div>
+                    <div class="b-example-divider"></div>
+                    <hr>
+                    <div class="b-example-divider"></div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+<script>
+
+    function deleteFromWishlist(id){
+        var result = confirm("是否要移除商品？");
+        if(result){
+            $.ajax({
+                url: "/Products/DeleteFromWishlist/" + id,
+                cache: false,
+                type: "POST",
+                dataType: 'text',
+                success: function (msg) {
+                    alert(msg);
+                    window.location.reload();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
+    }
+
+</script>

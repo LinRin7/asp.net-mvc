@@ -1,0 +1,56 @@
+﻿<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title></title>
+<div id="meal" class="container">
+    <p>輸入要吃的餐點及價格</p>
+    <button type="button" onclick="addInput()">新增選項</button>
+    <div id="inputMealArea"></div>
+    <button type="button" onclick="getData()">確定選項</button>
+</div>
+<style>
+    .meal_input_div{
+        margin-bottom: 10px;
+    }
+</style>
+<script>
+
+    var mealCount = 0;
+
+    function addInput(){
+        var inputMealArea = document.getElementById("inputMealArea");
+        var div = document.createElement("div");
+        div.classList.add("meal_input_div");
+
+        var inputMeal = document.createElement("input");
+        inputMeal.setAttribute("type", "text");
+        inputMeal.setAttribute("placeholder", "輸入餐點");
+    
+        var inputPrice = document.createElement("input");
+        inputPrice.setAttribute("type", "number");
+        inputPrice.setAttribute("placeholder", "輸入餐點價格");
+
+        var deleteButton = document.createElement("button");
+        deleteButton.textContent = "刪除";
+        deleteButton.onclick = function(){
+            inputMealArea.removeChild(div);
+        };
+
+        div.appendChild(inputMeal);
+        div.appendChild(inputPrice);
+        div.appendChild(deleteButton);
+
+        inputMealArea.appendChild(div);
+
+        mealCount++;
+    }
+
+    function getData(){
+        var inputs = document.getElementsByTagName("input");
+        var data = [];
+
+        for(var i = 0; i < inputs.length; i++){
+            data.push(inputs[i].value);
+        }
+
+        console.log(data);
+    }
+</script>

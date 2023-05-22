@@ -1,0 +1,41 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/*body {
+  margin-bottom: 60px;
+  background: #eee;
+}*/
+
+td.td-right-align {
+    text-align: right;
+}
+
+.b-example-divider-test {
+    width: 100%;
+    height: 1rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 1rem;
+    background-color: rgb(255, 255, 255);
+    border: solid rgb(255, 255, 255);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgb(255, 255, 255), inset 0 .125em .5em rgb(255, 255, 255);
+}

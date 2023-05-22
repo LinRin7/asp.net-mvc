@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyWebApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyWebApp.styles.css" asp-append-version="true" />
+</head>
+<body>
+
+    <header class="p-3 text-bg-dark navbar-dark bg-dark shadow-sm sticky-top">
+        <div>
+            <div class="container-fluid">
+                <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <!--<a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap" /></svg>
+                    </a>-->
+
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyWebApp</a>
+                    <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                        <!--<li><a href="#" class="nav-link px-2 text-white">Home</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Features</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">Pricing</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">FAQs</a></li>
+                        <li><a href="#" class="nav-link px-2 text-white">About</a></li>-->
+                    </ul>
+
+
+
+                    <!--<form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+                        <input type="search" class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+                    </form>-->
+
+                    <div class="text-end">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button type="button" class="btn btn-outline-light me-2" onclick="memberCenter()">@User.Identity.Name</button>
+                            <button type="button" class="btn btn-outline-light me-2" onclick="logout()">登出</button>
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-outline-light me-2" onclick="login()">登入</button>
+                            <button type="button" class="btn btn-warning" onclick="register()">註冊</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div>
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            @*&copy; 2023 - MyWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

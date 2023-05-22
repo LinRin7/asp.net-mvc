@@ -1,0 +1,23 @@
+﻿<div class="b-example-divider"></div>
+<div class="container">
+    <h4>搜尋Joke</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="ShowSearchResults">
+                <div class="form-group">
+                    <label for="SearchPhrase" class="control-label">輸入要搜尋的笑話：</label>
+                    <input name="SearchPhrase" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="查詢" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">回JOKE首頁</a>
+    </div>
+
+</div>

@@ -1,0 +1,100 @@
+﻿@model MyWebApp.Models.Product
+
+<div class="justify-content-center">
+    <div class="row">
+        <div class="col-md-auto" style="height: 100%;">
+            <img src="@Html.DisplayFor(model => model.Picture)" />
+        </div>
+        <div class="col">
+            <div class="b-example-divider"></div>
+            <dl>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Description)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Description)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Price)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Price)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Category)
+                </dt>
+                
+                @if (Model.Category.ToString() == "game")
+                {
+                    <dd class="col-sm-10">遊戲</dd>
+                }
+                else if (Model.Category.ToString() == "anime")
+                {
+                    <dd class="col-sm-10">動畫</dd>
+                }
+                else if (Model.Category.ToString() == "music")
+                {
+                    <dd class="col-sm-10">音樂</dd>
+                }
+                else if (Model.Category.ToString() == "goods")
+                {
+                    <dd class="col-sm-10">周邊商品</dd>
+                }
+                
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ReleaseDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ReleaseDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.Brand)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.Brand)
+                </dd>
+            </dl>
+            <div class="align-self-end">
+                <button type="button" class="btn btn-primary" onclick="addWishlist(@Model.Id);">加入願望清單</button> |
+                <button type="button" class="btn btn-secondary" onclick="goBack();">返回</button>
+            </div>
+            <div class="b-example-divider"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    function addWishlist(id) {
+        var createPermissions = @User.Identity.IsAuthenticated.ToString().ToLower();
+        if (createPermissions === false) {
+            alert("需先登入會員");
+        }
+        else {
+            $.ajax({
+                url: "/Products/AddWishlist/" + id,
+                cache: false,
+                type: "POST",
+                dataType: 'text',
+                success: function (msg) {
+                    alert(msg);
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.status);
+                    alert(thrownError);
+                }
+            });
+        }
+    }
+
+    function goBack(){
+        window.history.back();
+    }
+
+</script>

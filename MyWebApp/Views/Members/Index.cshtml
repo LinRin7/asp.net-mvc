@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MyWebApp.Models.Member>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div>
+    <input type="hidden" value="@ViewBag.Message" id="Message" />
+    @*<input type="hidden" value="@ViewBag.CookieValue" id="CookieValue" />*@
+</div>
+<div class="b-example-divider"></div>
+<div class="container">
+    <h1>會員首頁</h1>
+
+    歡迎回來，@User.Identity.Name</br>
+    功能列表：<br />
+    <a class="btn btn-link" asp-area="" asp-controller="Members" asp-action="Details">查看會員資料</a>
+    <a class="btn btn-link" asp-area="" asp-controller="Jokes" asp-action="Index">YouTube教學影片：JOCK笑話分享</a>
+    <a class="btn btn-link" asp-area="" asp-controller="Products" asp-action="Index">商品</a>
+    <hr />
+    <p id="showCookieValue"></p>
+</div>
+
+<script>
+
+    function showMessage() {
+        @*var message = '@ViewBag.Message.ToString()';*@
+        var message = $("#Message").val();
+        if (message != null && message != "") {
+            alert(message);
+        }
+        console.log(message);
+    }
+
+    function showCookieValue(){
+        //if ($("#CookieValue").val() == "" ){
+        //    $("#showCookieValue").text($("#CookieValue").val());
+        //}
+    }
+
+    window.onload = function () {
+        showMessage();
+        showCookieValue();
+    };
+
+</script>

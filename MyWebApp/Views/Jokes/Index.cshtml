@@ -1,0 +1,113 @@
+﻿@model IEnumerable<MyWebApp.Models.Joke>
+@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "Index";
+    //Layout = null;
+
+    //var message = ViewBag.Message;
+}
+<div class="b-example-divider"></div>
+<div class="container">
+    <h1><a asp-action="Index"> JOKE首頁</a></h1>
+    <div>
+        <input type="hidden" value="@ViewBag.Message" id="Message" />
+        <input type="hidden" value="@ViewBag.SearchPhrase" id="SearchPhrase" />
+    </div>
+
+
+    <p>
+        <button onclick="createJoke()">創建笑話</button>&nbsp;<button onclick="searchJoke()">搜尋笑話</button>
+        <a href="https://www.youtube.com/watch?v=BfEjDD8mWYg&ab_channel=freeCodeCamp.org">YT教學影片來源</a>
+        <!--<a asp-action="Create">Create New</a><br />
+        <a asp-action="ShowSearchForm">Search</a>-->
+    </p>
+
+
+
+    <p id="showSearchPhrase"></p>
+
+
+    <p></p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.JokeQuestion)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Owner)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.JokeQuestion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Owner)
+                    </td>
+                    <td class="td-right-align">
+                        <a asp-action="Details" asp-route-id="@item.Id">查看</a>
+                        @if (User.Identity.IsAuthenticated && User.FindFirst(ClaimTypes.Email).Value.ToString() == @item.Owner)
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id"> | 編輯</a>
+                        }
+                        @*<a asp-action="Delete" asp-route-id="@item.Id">Delete</a>*@
+                        <!--<button onclick="Detail()">查看</button>-->
+                        <!--<button onclick="Edit()">編輯</button>-->
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p><a href="https://babywinru.pixnet.net/blog/post/66126241" target="_blank">註：笑話來源</a></p>
+</div>
+
+<script>
+
+    function createJoke() {
+        var createPermissions = @User.Identity.IsAuthenticated.ToString().ToLower();
+        if (createPermissions === false) {
+            alert("需先登入會員才可創建JOKE");
+        }
+        else{
+            const url = 'Jokes/Create';
+            window.location.href = url;
+        }
+    }
+
+    function searchJoke() {
+        const url = 'Jokes/ShowSearchForm';
+        window.location.href = url;
+    }
+
+    function showMessage() {
+        @*var message = '@ViewBag.Message.ToString()';*@
+        var message = $("#Message").val();
+        if (message != null && message != "") {
+            alert(message);
+        }
+        console.log(message);
+    }
+
+    function showSearchPhrase(){
+        var searchPhrase = $("#SearchPhrase").val();
+        if (searchPhrase != null && searchPhrase != "") {
+            $("#showSearchPhrase").text("搜尋：" + searchPhrase);
+        }
+    }
+
+    window.onload = function () {
+        showMessage();
+        showSearchPhrase();
+    };
+
+
+
+</script>

@@ -1,0 +1,67 @@
+﻿@model MyWebApp.Models.Member
+
+@{
+    ViewData["Title"] = "Register";
+    ViewData["CTitle"] = "會員註冊";
+}
+<div class="b-example-divider"></div>
+<div class="container">
+    <h1>@ViewData["CTitle"]</h1>
+    <hr />
+    <div>
+        <input type="hidden" value="@ViewBag.Message" id="Message" />
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Register">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label">輸入姓名：</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label">輸入Email：</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">輸入密碼：</label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" value="member" asp-for="Role" class="form-control" />
+                    <span asp-validation-for="Role" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="註冊會員" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">回首頁</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    
+    function showMessage() {
+        @*var message = '@ViewBag.Message.ToString()';*@
+        var message = $("#Message").val();
+        if (message != null && message != "") {
+            alert(message);
+        }
+        console.log(message);
+    }
+
+    window.onload = function () {
+        showMessage();
+    };
+</script>

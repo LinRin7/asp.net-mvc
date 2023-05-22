@@ -1,0 +1,136 @@
+﻿使用postman對商品的CRUD
+<br />
+<br />
+1.取得全部商品(Get)url：https://localhost:7218/api/ProductsApi
+<br />
+<br />
+2.取得指定Id商品(Get)https://localhost:7218/api/ProductsApi/GetTheProduct?productId=XX
+<br />
+<br />
+3.新增一個商品(post)(有設定驗證身分，需在Headers新增Key：Cookie，Value：MyWebAppCookie=Cookie的值在console有顯示貼過來)<br />
+https://localhost:7218/api/ProductsApi/NewProduct
+<br />
+<br />
+4.更新指定Id商品(put)(有設定驗證身分)
+https://localhost:7218/api/ProductsApi/EditProductPut?productId=XX
+<br />
+<br />
+5.更新指定Id商品(patch)(有設定驗證身分)
+https://localhost:7218/api/ProductsApi/EditProductPatch?productId=XX<br />
+Patch參考資料：https://learn.microsoft.com/zh-tw/aspnet/core/web-api/jsonpatch?view=aspnetcore-7.0<br />
+[
+    {
+        "op": "replace",
+        "path": "/Description",
+        "value": "死を逸(かわ)し 倒す快感\r\n\r\n未曽有の生物災害“ラクーン事件”から 6年―。\r\nエージェントとなったレオン・S・ケネディへ舞い込む誘拐された大統領令嬢の救出任務\r\n“狂気”に支配された地へ足を踏み入れたレオンの行く末とは・・・\r\n生と死、恐怖とカタルシスが交差していく過酷な救出劇がいま幕を開ける─\r\n直感的な操作と最新のグラフィック、再構成されたストーリーによって蘇る最新のサバイバルホラー体験。\r\n「CERO区分_Z」"
+    }
+]
+<br />
+<br />
+6.刪除指定Id商品(delete)(有設定驗證身分)
+https://localhost:7218/api/ProductsApi/DeleteProduct?productId=XX
+<br />
+<br />
+<hr />
+商品範例：
+<br />
+<br />
+{
+    "Name": "FINAL FANTASY XVI 【PS5ゲームソフト】",
+    "Description": "これは―クリスタルの加護を断ち切るための物語\r\n「ファイナルファンタジー」ナンバリングタイトル最新第16作目。\r\n\r\n強大な召喚獣の力を操る「ドミナント」によって引き起こされた戦乱の時代を描く、重厚で壮大なファンタジーの世界。\r\nプレイヤーは、主人公クライヴ・ロズフィールドの生涯を辿りながら、過酷な運命の中で見つける正義、そして世界の真実に迫る―\r\n主人公クライヴのスタイリッシュなバトルアクションはもちろんのこと、PlayStation 5の性能を最大限に活かし、これまで実現不可能だった超巨大スケールの召喚獣同士の激突を描くアクションRPG超大作。",
+    "Price": 8900,
+    "Category": "game",
+    "ReleaseDate": "2023-06-22",
+    "Brand": "SQUARE ENIX",
+    "Picture": "https://drive.google.com/file/d/1lo7BDlWHrTku7XZdKaoLzwHAab8OTgOF/view?usp=share_link"
+}
+<br />
+<br />
+{
+    "Name":"バイオハザード RE:4",
+    "Description":"死を逸(かわ)し 倒す快感\r\n\r\n未曽有の生物災害“ラクーン事件”から 6年―。\r\nエージェントとなったレオン・S・ケネディへ舞い込む誘拐された大統領令嬢の救出任務\r\n“狂気”に支配された地へ足を踏み入れたレオンの行く末とは・・・\r\n生と死、恐怖とカタルシスが交差していく過酷な救出劇がいま幕を開ける─\r\n直感的な操作と最新のグラフィック、再構成されたストーリーによって蘇る最新のサバイバルホラー体験。\r\n「CERO区分_Z」",
+    "Price":7910,
+    "Category":"game",
+    "ReleaseDate":"2023-03-24",
+    "Brand":"CAPCOM",
+    "Picture":"https://drive.google.com/file/d/1G3lc57SzPKy-8ZYsuHmWm_kJlWdNxIwU/view?usp=share_link"
+}
+<br />
+<br />
+{
+    "Name": "チェンソーマン Vol．3 BD",
+    "Description": "「週刊少年ジャンプ」にて連載された藤本タツキ原作の超話題作『チェンソーマン』を「ドロヘドロ」「呪術廻戦」を手掛けたMAPPAがアニメ化！\r\n\r\n「週刊少年ジャンプ」にて連載された藤本タツキ原作の超話題作『チェンソーマン』を「ドロヘドロ」「呪術廻戦」を手掛けたMAPPAがアニメ化！\r\n\r\n【ストーリー】\r\n『チェンソーの悪魔』ポチタと共にデビルハンターとして暮らす少年デンジ。\r\n親が遺した借金返済のため、貧乏な生活を送る中、裏切りに遭い殺されてしまう。\r\n薄れる意識の中、デンジはポチタと契約し、悪魔の心臓を持つもの『チェンソーマン』として蘇る─。\r\n【収録話】\r\n第7話～第9話",
+    "Price": 7480,
+    "Category": "anime",
+    "ReleaseDate": "2023-03-31",
+    "Brand": "MAPPA",
+    "Picture": "https://drive.google.com/file/d/1yk0FX-Uz3ZlHY4hFGjATdQXgQc0haUwm/view?usp=share_link"
+}
+<br />
+<br />
+{
+    "Name": "【特典対象】 ONE PIECE FILM RED スタンダード･エディション 4K ULTRA HD BD アクリルジオラマ付き\r\n◆ビックカメラ・ソフマップ共通特典「アクリルコースター」◆メーカー特典「“ウタ”クリアカード」",
+    "Description": "赤髪が導く“終焉”\r\nルフィ、ウタ、シャンクス3人の過去が明らかになり――\r\n動き出す、歌と家族の物語。",
+    "Price": 7600,
+    "Category": "anime",
+    "ReleaseDate": "2023-06-14",
+    "Brand": "東映ビデオ",
+    "Picture": "https://drive.google.com/file/d/1zJCrPmMCJt7ZtWipQcsCX9tiao2IO-Gg/view?usp=share_link"
+}
+<br />
+<br />
+{
+    "Name": "holo＊27/ holo＊27 Originals Vol．1",
+    "Description": "hololive×DECO＊27新プロジェクト「holo＊27」のアルバムが2作同時リリース！\r\n\r\nhololive×DECO＊27新プロジェクト「holo＊27」のアルバムが2作同時リリース！\r\n\r\n2022年12月1日より始動したhololive × DECO＊27による新規音楽プロジェクト「holo＊27」。\r\nインターネットの10代～20代の若い世代に圧倒的な支持を得ているDECO＊27がhololiveタレント達を総合プロデュース。\r\n2023年3月15日には「holo＊27 Originals Vol．1」「holo＊27 Covers Vol．1」のアルバム2作が同時リリース。\r\n\r\n「holo＊27 Originals Vol．1」はDECO＊27プロデュースによる新規書き下ろし楽曲10曲をhololiveタレント達がボーカルを担当したオリジナルアルバム。",
+    "Price": 5500,
+    "Category": "music",
+    "ReleaseDate": "2023-03-15",
+    "Brand": "ソニーミュージックマーケティング",
+    "Picture": "https://drive.google.com/file/d/1OGl2DU0lJJp0Qt8UMVDEPQNC5yFCOqaZ/view?usp=share_link"
+}
+<br />
+<br />
+{
+    "Name": "渡辺曜（CV：斉藤朱夏）from Aqours/ LoveLive！ Sunshine！！ Third Solo Concert Album ～THE STORY OF “OVER THE RAINBOW”～ starring Watanabe You",
+    "Description": "【収録内容】\r\n劇場版を中心とした楽曲のソロVerに加え、新規楽曲1曲を収録！\r\n※メンバーごとに収録楽曲が異なります。\r\n\r\nDisc．1\r\n01． Pops heartで踊るんだもん！\r\n作詞：畑 亜貴　作曲・編曲：高田 暁\r\n02． 空も心も晴れるから\r\n作詞：畑 亜貴　作曲：原田 篤 （Arte Refact）　編曲：脇 眞富 （Arte Refact）\r\n03． Daydream Warrior\r\n作詞：畑 亜貴　作曲：前口 渉　編曲：中土智博\r\n04． スリリング・ワンウェイ\r\n作詞：畑 亜貴　作曲・編曲：藤井亮太 ， 小高光太郎\r\n05． 太陽を追いかけろ！\r\n作詞：畑 亜貴　作曲・編曲：松田彬人\r\n06． ジングルベルがとまらない\r\n作詞：畑 亜貴　作曲：光増ハジメ （FirstCall）　編曲：EFFY （FirstCall）\r\n07． 聖なる日の祈り\r\n作詞：畑 亜貴　作曲：田中俊亮　編曲：田中俊亮 ， 伊藤 賢\r\n\r\nDisc．2\r\n08． Marine Border Parasol\r\n作詞：畑 亜貴　作曲：Akira Sunset ， ulala　編曲：高田 暁\r\n09． 僕らの走ってきた道は…\r\n作詞：畑 亜貴　作曲・編曲：EFFY （FirstCall）\r\n10． Hop？ Stop？ Nonstop！\r\n作詞：畑 亜貴　作曲：Kanata Okajima ， Keisuke Koyama　編曲：Keisuke Koyama\r\n11． Brightest Melody\r\n作詞：畑 亜貴　作曲：光増ハジメ （FirstCall）　編曲：EFFY （FirstCall）\r\n12． キセキヒカル\r\n作詞：畑 亜貴　作曲・編曲：加藤達也\r\n13． Next SPARKLING！！\r\n作詞：畑 亜貴　作曲・編曲：Carlos K．\r\n14． i-n-g， I TRY！！\r\n作詞：畑 亜貴　作曲・編曲：増田武史\r\n15． 新曲（タイトル未定）",
+    "Price": 3300,
+    "Category": "music",
+    "ReleaseDate": "2023-04-17",
+    "Brand": "ランティス",
+    "Picture": "https://drive.google.com/file/d/1_r6m-luWZeU0qNu0MeTg7d-dMfocmMae/view?usp=share_link"
+}
+<br />
+<br />
+{
+    "Name": "GUNDAM UNIVERSE 機動戦士ガンダムUC RX-0 UNICORN GUNDAM（AWAKENED）",
+    "Description": "可能性の獣「ユニコーンガンダム」が、サイコフレームが緑色に輝く、覚醒時の仕様で“GUNDAM UNIVERSE”に再登場！\r\n\r\n可能性の獣「ユニコーンガンダム」が、サイコフレームが緑色に輝く、覚醒時の仕様で“GUNDAM UNIVERSE”に再登場！\r\n\r\n約6インチのボディに、シリーズ特有のボリューム感のある造形アレンジと可動を盛り込んでいます！\r\n\r\n■バックパックと両腕のビームサーベルが取り外し可能。\r\n■グリーンへと変わったフレームのカラーリングにより、通常のユニコーンガンダムとは印象の異なる覚醒時のユニコーンガンダムを再現。",
+    "Price": 2580,
+    "Category": "goods",
+    "ReleaseDate": "2023-09-30",
+    "Brand": "バンダイスピリッツ",
+    "Picture": "https://drive.google.com/file/d/1BJiFr_SX2sM8OXY4lKglvQW-5BfdZkEp/view?usp=share_link"
+}
+<br />
+<br />
+{
+    "Name": "ROBOT魂 [SIDE MS] 機動戦士ガンダム 水星の魔女 ガンダム・エアリアル ver． A．N．I．M．E．",
+    "Description": "『機動戦士ガンダム 水星の魔女』より、「ガンダム・エアリアル」が登場！その魅力を存分に再現出来る豪華仕様！\r\n\r\n『機動戦士ガンダム 水星の魔女』より、「ガンダム・エアリアル」が登場！\r\nその魅力を存分に再現出来る豪華仕様！\r\n\r\nver． A．N．I．M．E．で培った関節構造や多彩なエフェクト表現で、ガンダム・エアリアルの特徴的なシルエットと、しなやかな可動を完全再現。",
+    "Price": 6580,
+    "Category": "goods",
+    "ReleaseDate": "2023-04-29",
+    "Brand": "バンダイスピリッツ",
+    "Picture": "https://drive.google.com/file/d/1BPlq83DgTTlnga7XlH2a4NEiM7Lils-3/view?usp=share_link"
+}
+<br />
+<br />
+{
+    "Name": "ROBOT魂 [SIDE EVA] ヱヴァンゲリヲン新劇場版 エヴァンゲリオン初号機＋カシウスの槍（リニューアルカラーエディション）",
+    "Description": "リニューアルカラー＆カシウスの槍！好評を博した「ROBOT魂 [SIDE EVA] エヴァンゲリオン初号機-新劇場版-」が装いも新たに最新仕様で登場！\r\n\r\nリニューアルカラー＆カシウスの槍！\r\n好評を博した「ROBOT魂 [SIDE EVA] エヴァンゲリオン初号機-新劇場版-」が装いも新たに最新仕様で登場！\r\n\r\n2020年に発売した「ROBOT魂 [SIDE EVA] エヴァンゲリオン初号機-新劇場版-」が新たなカラーリングに加え、\r\n新規造形のカシウスの槍を携えROBOT魂に登場！\r\n大迫力の劇中戦闘シーンが再現可能！",
+    "Price": 6480,
+    "Category": "goods",
+    "ReleaseDate": "2023-03-18",
+    "Brand": "バンダイスピリッツ",
+    "Picture": "https://drive.google.com/file/d/1l1bUheJqpiS9RR8XDuxgMQBB3_fx1YDp/view?usp=share_link"
+}
+<br />
+<br />
