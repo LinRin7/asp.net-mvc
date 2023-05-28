@@ -8,9 +8,13 @@
 
   <ItemGroup>
     <Compile Remove="DataAccess\**" />
+    <Compile Remove="Views\test\**" />
     <Content Remove="DataAccess\**" />
+    <Content Remove="Views\test\**" />
     <EmbeddedResource Remove="DataAccess\**" />
+    <EmbeddedResource Remove="Views\test\**" />
     <None Remove="DataAccess\**" />
+    <None Remove="Views\test\**" />
   </ItemGroup>
 
   <ItemGroup>

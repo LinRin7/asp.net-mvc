@@ -44,6 +44,19 @@ namespace MyWebApp.Controllers
             return Content(json, "application/json");
         }
 
+        [HttpGet("GetPageProducts/{page}")]
+        public async Task<IEnumerable<Product>> GetPageProducts(int page)//取得指定頁數的商品
+        {
+            /*
+             * https://localhost:7218/api/ProductsApi/GetPageProducts/XX
+             * */
+            Console.WriteLine("頁數：" + page);
+            int pageSize = 6;//參考ProductController
+            var json = await _productService.PageGetProducts(page, pageSize, "all");
+            var productsToShow = json.Skip((Convert.ToInt32(page) - 1) * pageSize).Take(pageSize);
+            return productsToShow;
+        }
+
         [HttpGet("GetTheProduct")]
         public async Task<ActionResult<Product>> GetTheProduct(int productId)//取得指定id商品
         {
