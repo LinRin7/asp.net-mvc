@@ -1,6 +1,6 @@
 Asp.Net Core WebApp (MVC) .NET 6.0<br /><br />
 
-資料庫：MSSQL 存取：LINQ<br />
+資料庫：MSSQL 存取：Entity Framework, LINQ<br />
 驗證：Cookie身分驗證(驗證方案：CookieAuthenticationDefaults.AuthenticationScheme)<br /><br />
 
 功能：<br /><br />
